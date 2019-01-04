@@ -1,7 +1,7 @@
 let constants = require('../helpers/constants.js');
 
 // Private fields
-let modules, library;
+let modules, library, self;
 
 /**
  * Initializes library.
@@ -14,6 +14,7 @@ function Delegate (schema) {
 	library = {
 		schema: schema,
 	};
+	self = this;
 }
 
 // Public methods
@@ -174,7 +175,7 @@ Delegate.prototype.verify = function (trs, sender, cb) {
 };
 
 Delegate.prototype.verifyUnconfirmed = function (trs, sender, cb) {
-	return this.verify(trs, sender, cb);
+	return self.verify(trs, sender, cb);
 }
 
 /**
